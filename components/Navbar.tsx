@@ -15,7 +15,7 @@ const Navbar = () => {
 
         </div>
         <div className='gap-2 flex items-center'>
-            <Link href="/sign-in" className={`font-semibold ${rubik.className} text-white text-md`}>Sign in</Link>
+            <Link href="/login" className={`font-semibold ${rubik.className} text-white text-md`}>Sign in</Link>
             <Link href="/events" className={`font-semibold ${rubik.className} text-white text-md`}>Events</Link>
         </div>
     </div>

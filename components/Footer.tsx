@@ -10,16 +10,6 @@ const Footer = () => {
   return (
     <footer className={`${manrope.className} bg-black text-gray-300`}>
       <div className="container mx-auto px-4 py-12">
-      <GridPattern
-        numSquares={30}
-        maxOpacity={0.5}
-        duration={3}
-        repeatDelay={1}
-        className={cn(
-          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
-        )}
-      />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
