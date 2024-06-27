@@ -3,7 +3,7 @@
 import SparklesText from "@/components/ui/sparkles-text";
 import { useSession } from "next-auth/react"
 
-const page = () => {
+const Events = () => {
 
   const session = useSession();
   return (
@@ -13,4 +13,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Events
