@@ -21,13 +21,14 @@ import Footer from "@/components/Footer"
 import { signIn } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { Spotlight } from "@/components/ui/Spotlight"
 import Link from "next/link"
 
 
 
 const FormSchema = z.object({
   email: z.string().email({
-    message: "Invaild email address",
+    message:"Invalid email address."
   }),
   password : z.string().min(8,{
     message:"Password must be at least 8 characters."
@@ -57,7 +58,7 @@ export default function Login() {
       const signInData = await signIn('credentials',{
         email:data.email,
         password:data.password,
-        redirect:true
+        redirect:false
       });
 
       if(signInData?.error){
@@ -78,7 +79,11 @@ export default function Login() {
   return (
     <>
     <Navbar />
-    <div className="h-screen flex flex-col items-center bg-black justify-center">
+    <div className="h-screen bg-black flex items-center justify-center">
+      <Spotlight
+      fill="white"
+      className="absolute -top-40 left-0 md:left-60 md:-top-20"
+      />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-4 p-4">
           <div className="text-center">
@@ -89,9 +94,9 @@ export default function Login() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe18" {...field} />
+                  <Input placeholder="johndoe18@mail.com" type="email" required {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,7 +107,7 @@ export default function Login() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Password</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="******" {...field} />
                 </FormControl>
@@ -111,11 +116,12 @@ export default function Login() {
             )}
           />
           {error && <p className="text-red-500">{error}</p>}
-          <Button type="submit" className="text-black bg-white" variant={'ghost'}>
+          <Button variant={null} className="bg-white text-black" type="submit">
+          
 {loading ? (
   <div className="flex items-center">
     <svg
-      className="animate-spin h-5 w-5 mr-3 text-black"
+      className="animate-spin h-5 w-5 mr-3 text-white dark:text-black"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -140,8 +146,10 @@ export default function Login() {
   "Login"
 )}
 </Button>
+<div className="">
+  <h1 className="text-white text-center">Not a Hopper yet? <span><Link className="text-blue-700" href="/sign-up">Join Now!</Link></span></h1>
+</div>
         </form>
-        <FormDescription className="text-xl text-center">not a member? <Link href="/sign-up" className="text-blue-700 underline">Register</Link></FormDescription>
       </Form>
     </div>
     <Footer/>

@@ -73,7 +73,7 @@ export default function Register() {
   return (
     <>
       <Navbar />
-      <div className="h-screen flex items-center bg-black justify-center">
+      <div className="h-screen flex items-center  bg-black justify-center">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-4 p-4">
             <div className="text-center">
@@ -157,7 +157,7 @@ export default function Register() {
     "Register"
   )}
 </Button>
-<FormDescription className="text-xl text-center">Already a member? <Link href="/login" className="text-blue-700 underline">Login</Link></FormDescription>
+<FormDescription className="text-xl text-center">Already a EventHopper? <Link href="/login" className="text-blue-700 underline">Login</Link></FormDescription>
           </form>
           <div></div>
         </Form>

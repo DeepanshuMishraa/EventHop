@@ -13,24 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-model User {
+model User{
   id Int @id @default(autoincrement())
   email String @unique
+  password String 
   name String 
-  password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  events Event[]
-}
-
-model Event {
-  id Int @id @default(autoincrement())
-  name String
-  description String
-  date DateTime
-  userId Int
-  user User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
