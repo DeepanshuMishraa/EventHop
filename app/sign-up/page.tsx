@@ -24,8 +24,8 @@ import Footer from "@/components/Footer"
 import Link from "next/link"
 
 const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: "name must be at least 2 characters.",
+  username: z.string().min(2, {
+    message: "username must be at least 2 characters.",
   }),
   email: z.string().email({
     message: "Please enter a valid email address"
@@ -44,7 +44,7 @@ export default function Register() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: "",
+      username: "",
       email: "",
       password: ""
     },
@@ -58,7 +58,7 @@ export default function Register() {
 
       if (res.status === 201 || res.status === 200) {
         console.log("success")
-        router.push("/")
+        router.push("/login")
       }
     } catch (e) {
       setError("Something went wrong. Please try again.")
@@ -72,7 +72,7 @@ export default function Register() {
 
   return (
     <>
-      <Navbar />
+    <Navbar/>
       <div className="h-screen flex items-center  bg-black justify-center">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-4 p-4">
@@ -81,10 +81,10 @@ export default function Register() {
             </div>
             <FormField
               control={form.control}
-              name="name"
+              name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Name</FormLabel>
+                  <FormLabel className="text-white">Username</FormLabel>
                   <FormControl>
                     <Input placeholder="johndoe18" {...field} />
                   </FormControl>

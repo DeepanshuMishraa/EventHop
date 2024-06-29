@@ -8,13 +8,13 @@ import { AuroraBackground } from "@/components/ui/aurora";
 import { motion } from "framer-motion";
 
 
+
 export default function Home() {
   return (
     <>
     <Navbar/>
     <Hero/>
     <Landing/>
-    <Footer/>
     </>
   );
 }

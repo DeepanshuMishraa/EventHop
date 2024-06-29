@@ -3,12 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
 import { Providers } from "./Providers";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CourseSync",
-  description: "Where Students meet,to communicate",
+  title: "EventHop",
+  description: "An event app",
 };
 
 export default function RootLayout({
@@ -23,7 +25,6 @@ export default function RootLayout({
         <Providers>
         {children}
         </Providers>
-
         </body>
     </html>
 )

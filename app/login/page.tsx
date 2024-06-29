@@ -27,8 +27,8 @@ import Link from "next/link"
 
 
 const FormSchema = z.object({
-  email: z.string().email({
-    message:"Invalid email address."
+  username: z.string().min(3,{
+    message:"Username must be at least 3 characters."
   }),
   password : z.string().min(8,{
     message:"Password must be at least 8 characters."
@@ -42,7 +42,7 @@ export default function Login() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   })
@@ -56,7 +56,7 @@ export default function Login() {
     try{
       setLoading(true);
       const signInData = await signIn('credentials',{
-        email:data.email,
+        username:data.username,
         password:data.password,
         redirect:false
       });
@@ -78,7 +78,7 @@ export default function Login() {
 
   return (
     <>
-    <Navbar />
+    <Navbar/>
     <div className="h-screen bg-black flex items-center justify-center">
       <Spotlight
       fill="white"
@@ -91,12 +91,12 @@ export default function Login() {
           </div>
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-white">Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe18@mail.com" type="email" required {...field} />
+                  <Input placeholder="john18" type="text" required {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -107,7 +107,7 @@ export default function Login() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel className="text-white">Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="******" {...field} />
                 </FormControl>
@@ -152,7 +152,6 @@ export default function Login() {
         </form>
       </Form>
     </div>
-    <Footer/>
   </>  
   )
 }

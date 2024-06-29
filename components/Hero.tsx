@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import { Spotlight } from "./ui/Spotlight";
 import { Search, Calendar, Bell, Share2 } from 'lucide-react';
 import { Button } from './ui/button';
+import Link from 'next/link';
 
 const manrope = Manrope({subsets:['latin'], weight:["300","400","500","700"]})
 
@@ -24,7 +25,7 @@ const Hero = () => {
               Discover, plan, and join events effortlessly. Your go-to platform for all things social.
             </p>
             <Button className="bg-white text-black font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition duration-300">
-              Get Started
+              <Link href="/events">Get Started</Link>
             </Button>
           </div>
           

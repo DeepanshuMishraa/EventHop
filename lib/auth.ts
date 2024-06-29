@@ -16,17 +16,17 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "jsmith@mail.com" },
+        username: { label: "Username", type: "username", placeholder: "jsmith18" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        if (!credentials?.email || !credentials?.password) {
-          console.log("Missing email or password");
+        if (!credentials?.username || !credentials?.password) {
+          console.log("Missing username or password");
           return null;
         }
 
         const existingUser = await prisma.user.findUnique({
-          where: { email: credentials.email },
+          where: { username: credentials.username },
         });
 
         if (!existingUser) {
@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: `${existingUser.id}`,
-          email: existingUser.email,
+          username: existingUser.username,
         };
       },
     }),
@@ -62,7 +62,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         return {
           ...token,
-          email: user.email,
+          username: user.username,
         };
       }
       return token;
@@ -72,7 +72,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          email: token.email,
+          username: token.username,
         },
       };
     },
