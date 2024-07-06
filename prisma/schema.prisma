@@ -30,6 +30,7 @@ model Event{
   location String
   date DateTime
   time DateTime
+  slug String? @unique
   image String
   Price Int?
   userId Int

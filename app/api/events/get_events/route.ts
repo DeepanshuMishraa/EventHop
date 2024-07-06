@@ -5,6 +5,7 @@ export async function GET() {
   try {
     const event = await prisma.event.findMany({
       select: {
+        id:true,
         name: true,
         description: true,
         date: true,

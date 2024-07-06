@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     }
 
     const reqBody = await req.json();
-    const { name, description, date, location, time, price, image } = reqBody;
+    const { name, description, date, location, time, price, image,slug } = reqBody;
 
     if (!name || !description || !date || !location || !time || !image) {
       return NextResponse.json({
@@ -50,6 +50,7 @@ export async function POST(req: NextRequest) {
         Price: price ? parseInt(price) : null,
         image,
         userId: user.id, // Use the ID from the database user
+        slug
       },
     });
 
