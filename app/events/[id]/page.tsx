@@ -10,6 +10,7 @@ import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, ClockIcon, CreditCardIcon, MapPinIcon } from "lucide-react";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 const montserat = Montserrat({subsets:['latin']})
 
@@ -66,7 +67,7 @@ const EventPage = () => {
           <div className="md:w-1/2 p-6 space-y-6">
             <h1 className="text-3xl font-bold text-gray-800">{event.name}</h1>
             <p className="text-gray-600">{event.description}</p>
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="flex items-center space-x-2 text-gray-700">
                 <MapPinIcon className="w-5 h-5" />
                 <span>{event.location}</span>
@@ -82,6 +83,10 @@ const EventPage = () => {
               <div className="flex items-center space-x-2 text-gray-700">
                 <CreditCardIcon className="w-5 h-5" />
                 <span>{event.Price ? `$${event.Price}` : 'Free'}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-700">
+                <PersonIcon className="w-5 h-5" />
+                <span>{event.User.username}</span>
               </div>
             </div>
             <CardFooter className="px-0 pt-6">

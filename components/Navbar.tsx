@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className='flex justify-between p-4 w-full h-20 items-center bg-black/[0.96] antialiased bg-grid-white/[0.02]'>
       <Spotlight fill='white' className='absolute -top-40 left-0 md:left-60 md:-top-20'/>
         <div className='p-2'>
-            <Link href="/"><SparklesText className='md:text-5xl' text='EventHop'/></Link>
+            <Link href="/"><SparklesText className='md:text-3xl' text='EventHop'/></Link>
         </div>
         <div className='gap-4 flex items-center'>
           {session?.status == "authenticated" ? (

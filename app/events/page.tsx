@@ -75,7 +75,7 @@ const Events: React.FC = () => {
         />
 
         <div className="p-4 mb-6">
-          <h1 className={`${manropee.className} text-center text-6xl max-lg:text-3xl text-white font-bold`}>Featured Events</h1>
+          <h1 className={`${manropee.className} text-center text-3xl max-lg:text-3xl text-white font-bold`}>Featured Events</h1>
         </div>
         <div className="grid md:grid-cols-4 gap-4 grid-rows-1 max-lg:place-items-center max-lg:p-4">
           {loading ? (
@@ -84,9 +84,9 @@ const Events: React.FC = () => {
             <p className="text-red-500">{error}</p>
           ) : events.length > 0 ? (
             events.map((event, index) => (
-              <Card key={index} className="w-[330px]">
+              <Card key={index} className="w-[330px] bg-black text-white">
                 <div>
-                  <Button variant={"outline"} onClick={(e) => {
+                  <Button variant={"outline"} className="bg-black " onClick={(e) => {
                     e.preventDefault(); // Prevent navigation
                     deleteEvent(event.name);
                   }}>
